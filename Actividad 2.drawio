@@ -1,0 +1,46 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/152.0.0.0 Safari/537.36">
+  <diagram name="Página-1" id="cQ0w0CVGqGWj8diS99Nj">
+    <mxGraphModel dx="414" dy="472" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="Zyc_Z52MpQujVYdEiv_1-14" parent="1" style="whiteSpace=wrap;html=1;aspect=fixed;" value="" vertex="1">
+          <mxGeometry height="225" width="225" x="660" y="95" as="geometry" />
+        </mxCell>
+        <mxCell id="Zyc_Z52MpQujVYdEiv_1-13" parent="1" style="whiteSpace=wrap;html=1;aspect=fixed;" value="" vertex="1">
+          <mxGeometry height="225" width="225" x="348" y="95" as="geometry" />
+        </mxCell>
+        <mxCell id="Zyc_Z52MpQujVYdEiv_1-11" parent="1" style="whiteSpace=wrap;html=1;aspect=fixed;" value="" vertex="1">
+          <mxGeometry height="225" width="225" x="40" y="95" as="geometry" />
+        </mxCell>
+        <mxCell id="Zyc_Z52MpQujVYdEiv_1-3" edge="1" parent="1" source="Zyc_Z52MpQujVYdEiv_1-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="Zyc_Z52MpQujVYdEiv_1-2" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Zyc_Z52MpQujVYdEiv_1-5" edge="1" parent="1" source="Zyc_Z52MpQujVYdEiv_1-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="Zyc_Z52MpQujVYdEiv_1-4" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Zyc_Z52MpQujVYdEiv_1-2" parent="1" style="text;html=1;whiteSpace=wrap;overflow=hidden;rounded=0;" value="&lt;h1 style=&quot;margin-top: 0px;&quot;&gt;Cuentas&lt;/h1&gt;&lt;div&gt;nombre&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;saldo&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;numero&amp;nbsp;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;cliente_id (Fk)&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="270" width="180" x="370.5" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="Zyc_Z52MpQujVYdEiv_1-1" parent="1" style="text;html=1;whiteSpace=wrap;overflow=hidden;rounded=0;" value="&lt;h1 style=&quot;margin-top: 0px;&quot;&gt;Cliente&lt;/h1&gt;&lt;p&gt;clientes_id (Pk)&lt;/p&gt;&lt;p&gt;nombre&amp;nbsp;&lt;/p&gt;&lt;p&gt;correo&lt;/p&gt;&lt;p&gt;direccion&amp;nbsp;&lt;/p&gt;&lt;p&gt;numero&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;" vertex="1">
+          <mxGeometry height="260" width="165" x="100" y="105" as="geometry" />
+        </mxCell>
+        <mxCell id="Zyc_Z52MpQujVYdEiv_1-4" parent="1" style="text;html=1;whiteSpace=wrap;overflow=hidden;rounded=0;" value="&lt;h1 style=&quot;margin-top: 0px;&quot;&gt;Transacciones&lt;/h1&gt;&lt;div&gt;nombre&amp;nbsp;&lt;/div&gt;&lt;div&gt;monto&amp;nbsp;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="270" width="180" x="670" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="Zyc_Z52MpQujVYdEiv_1-6" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="N" vertex="1">
+          <mxGeometry height="30" width="60" x="600" y="200" as="geometry" />
+        </mxCell>
+        <mxCell id="Zyc_Z52MpQujVYdEiv_1-7" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="1" vertex="1">
+          <mxGeometry height="30" width="60" x="550" y="200" as="geometry" />
+        </mxCell>
+        <mxCell id="Zyc_Z52MpQujVYdEiv_1-9" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="1" vertex="1">
+          <mxGeometry height="30" width="60" x="250" y="210" as="geometry" />
+        </mxCell>
+        <mxCell id="Zyc_Z52MpQujVYdEiv_1-10" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="N" vertex="1">
+          <mxGeometry height="30" width="60" x="300" y="210" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

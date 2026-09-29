@@ -1,0 +1,5 @@
+Resolución Técnica
+
+No se recomienda usar ON DELETE CASCADE en el Core Bancario de OmniBank, porque al eliminar un cliente también podrían borrarse automáticamente sus cuentas, préstamos y transacciones. Esto podría causar pérdida de información por errores humanos, fallas del sistema o accesos no autorizados. Por eso se debe mantener ON DELETE RESTRICT para proteger los datos relacionados.
+
+Los registros de core.transactions y core.loans deben conservarse aunque el cliente cierre su relación con el banco, ya que forman parte de su historial financiero y pueden ser necesarios para auditorías y asuntos legales. En lugar de eliminarlos, se debe utilizar una baja lógica, por ejemplo is_active = false o cambiar el estado de la cuenta a CLOSED.

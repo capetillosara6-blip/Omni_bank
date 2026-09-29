@@ -1,0 +1,5 @@
+Justificacion de Arquitectura de Datos 
+
+Teoricamente el auditor tiene razon saldo_actual es un dato derivado porque se puede obtener sumando las transacciones de una cuenta. Sin embargo, en un sistema bancario con muchas operaciones, calcular las 250,000 transacciones cada vez que un cliente consulta su saldo aumentara el trabajo de PostgreSQL y podra generar mayor tiempo de respuesta 
+
+Por eso, Omni_Bank se mantendra saldo_actual como una desnormalizacion controlada para mejorar el rendimiento. Para evitar errores, el saldo y la transacciones se actualizaran juntos mediante bloqueos, triggers y transacciones ACID. Asi, si una operacion falla, los cambios se cancelan y se mantiene la informacion consistente. Dictamen: se acepta saldo_actual porque mejora el rendimiento sin perder la integridad de los datos.

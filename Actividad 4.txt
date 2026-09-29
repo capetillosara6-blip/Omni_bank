@@ -1,0 +1,21 @@
+CREATE TYPE tipo_moneda AS ENUM (USD, MXN, EUR);
+CREATE TYPE tipo_cuenta AS ENUM (Cheques, Ahorros, Credito);
+CREATE TYPE tipo_cuenta AS ENUM (Deposito, Transferencia, Retiro);
+
+Clientes
+clientes_id (PK UUID not null)
+nombre 
+apellido 
+email
+
+Cuentas 
+clientes_id (FK)
+cuentas_id (PK UUID not null)
+tipo_cuenta
+saldo
+
+Transacciones
+transaccion_id(PK UUID not null)
+cuenta_id (FK) 
+monto 
+fecha_transacion 

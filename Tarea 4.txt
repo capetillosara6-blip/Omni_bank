@@ -1,0 +1,10 @@
+CREATE DOMAIN monto_financiero AS NUMERIC (15,2) CHECK (value > = 0);
+
+CREATE DOMAIN texto_obligatorio AS VARCHAR (100) CHECK (VALUE <> AND LENGTH (TRIM(VALUE))>0)
+
+Monto_financiero 
+saldo de cuentas 
+monto de transacciones
+
+Estas dos columnas representan cantidades de dinero, por lo que utilizaran el dominio monto-monto_financiero,
+que permite valores con dos decimales y no permite cantidades negativas.

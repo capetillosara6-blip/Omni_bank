@@ -1,0 +1,2 @@
+-- Mi respuesta inicial de la tarea 3
+-- Dictamen sobre mantener saldo_actual por rendimiento en consultas frecuentes.

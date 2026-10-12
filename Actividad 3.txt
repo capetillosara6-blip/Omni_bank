@@ -1,0 +1,22 @@
+transaccion_id	fecha 	cliente	cliente_nombre	cliente_correo	transaccion_id	fecha 	cliente	cliente_nombre	cliente_correo	transaccion_id	fecha 	cliente	cliente_nombre
+TX-0001	7/20/2026	TAX-9911	Roberto Soto	rob@mail.com	TX-0002	7/21/2026	TAX-9912	Roberto Soto	rob@mail.com	TX-0003	7/22/2026	TAX-9913	Roberto Soto
+TX-0002	7/21/2026	TAX-9911	Roberto Soto	rob@mail.com	TX-0003	7/22/2026	TAX-9912	Roberto Soto	rob@mail.com	TX-0004	7/23/2026	TAX-9913	Roberto Soto
+
+Transacciones
+transaccion_id (pk)
+fecha 
+moneda 
+tipo
+monto
+cuenta_numero(pk)
+sucursal_codigo
+
+Clientes
+cliente_(pk)
+cliente_nombre
+cliente_correo
+
+Cuentas 
+cuenta_numero(pk)
+saldo_actual
+cliente_(fk)

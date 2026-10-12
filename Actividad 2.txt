@@ -1,27 +1,16 @@
-1. ENTIDAD: Cliente
---------------------------------------------------
-* Atributos:
-  - clientes_id (PK)
-  - nombre
-  - correo
-  - direccion
-  - numero
+[Clientes] 1 ------------ N [Cuentas]
+- cliente_id (PK)             - cuenta_id (PK)
+- nombre                      - cliente_id (FK)
+- correo                      - moneda
+- telefono                    - tipo_cuenta
+- fecha_nacimiento            - saldo_actual
+- tax_id                      - limite_credito
 
-2. ENTIDAD: Cuentas
---------------------------------------------------
-* Atributos:
-  - nombre
-  - saldo
-  - numero
-  - cliente_id (FK)
-
-3. ENTIDAD: Transacciones
---------------------------------------------------
-* Atributos:
-  - nombre
-  - monto
-
-4. RELACIONES:
---------------------------------------------------
-* Cliente (1) a (N) Cuentas
-* Cuentas (1) a (N) Transacciones
+                   (Cuenta Origen)
+[Cuentas] 1 ------------------------- N [Transacciones]
+                                          - transaccion_id (PK)
+                   (Cuenta Destino)       - from_account (FK -> Cuentas)
+[Cuentas] 1 ------------------------- N   - to_account (FK -> Cuentas)
+                                          - monto
+                                          - tipo_transaccion
+                                          - fecha_completada

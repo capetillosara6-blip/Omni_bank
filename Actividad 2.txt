@@ -1,0 +1,27 @@
+1. ENTIDAD: Cliente
+--------------------------------------------------
+* Atributos:
+  - clientes_id (PK)
+  - nombre
+  - correo
+  - direccion
+  - numero
+
+2. ENTIDAD: Cuentas
+--------------------------------------------------
+* Atributos:
+  - nombre
+  - saldo
+  - numero
+  - cliente_id (FK)
+
+3. ENTIDAD: Transacciones
+--------------------------------------------------
+* Atributos:
+  - nombre
+  - monto
+
+4. RELACIONES:
+--------------------------------------------------
+* Cliente (1) a (N) Cuentas
+* Cuentas (1) a (N) Transacciones

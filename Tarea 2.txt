@@ -1,38 +1,18 @@
 
-1. TABLAS Y ATRIBUTOS
---------------------------------------------------
+[Clientes] 1 ------------ N [Cuentas]
+- cliente_id (PK, UUID)       - cuenta_id (PK, UUID)
+- nombre                      - cliente_id (FK, UUID)
+- correo                      - moneda
+- telefono                    - tipo_cuenta
+- fecha_nacimiento            - saldo_actual (CHECK: >= 0)
+- tax_id (UNIQUE)             - limite_credito
+- is_active (Soft Delete)     - updated_at (Timestamp NFR)
 
-Tabla: Clientes
-- clientes_id (PK, UUID)
-- nombre
-- correo (Único)
-- direccion
-- numero
-- fecha_eliminacion
-
-Tabla: Cuentas
-- cuentas_id (PK, UUID)
-- cliente_id (FK, UUID)
-- numero_cuenta (Único)
-- saldo (No negativo)
-- fecha_actualizacion
-
-Tabla: Transacciones
-- transacciones_id (PK, UUID)
-- monto (Mayor que 0)
-- fecha_transaccion
-- cuentas_id (FK, UUID)
-
-
-2. RELACIONES Y CARDINALIDADES
---------------------------------------------------
-- Clientes (1) ------ (N) Cuentas
-- Cuentas  (1) ------ (N) Transacciones
-
-
-3. LEYENDA Y SIMBOLOGÍA
---------------------------------------------------
-- PK = Llave Primaria (Primary Key)
-- FK = Llave Foránea (Foreign Key)
-- UUID = Universally Unique Identifier (Identificador Único Aleatorio)
-==================================================
+                   (Cuenta Origen)
+[Cuentas] 1 ------------------------- N [Transacciones]
+                                          - transaccion_id (PK, UUID)
+                   (Cuenta Destino)       - from_account (FK, UUID -> Cuentas)
+[Cuentas] 1 ------------------------- N   - to_account (FK, UUID -> Cuentas)
+                                          - monto
+                                          - tipo_transaccion
+                                          - fecha_completada

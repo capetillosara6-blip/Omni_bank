@@ -1,29 +1,7 @@
--- report_aml_sar_detection.sql
-
-SELECT
-    transaction_id,
-    amount,
-    tx_type,
-    tx_timestamp,
-    COALESCE(
-        description,
-        'EXCLUSIÓN OPORTUNAMENTE DETECTADA - SIN MOTIVO DE PAGO'
-    ) AS descripcion_monitoreada
+SELECT transaction_id,account_id,tx_type,amount,
+       COALESCE(NULLIF(TRIM(description),''),'SIN DESCRIPCIÓN') AS visible_description
 FROM core.transactions
-WHERE
-    (
-        amount >= 10000.00
-        AND tx_type IN ('TRANSFER', 'WITHDRAWAL')
-    )
-    OR
-    (
-        (
-            NULLIF(TRIM(description), '') IS NULL
-            AND tx_type != 'DEPOSIT'
-        )
-        OR description ILIKE '%crypto%'
-        OR description ILIKE '%offshore%'
-        OR description ILIKE '%shell%'
-        OR description ILIKE '%casino%'
-    )
-ORDER BY amount DESC;
+WHERE (tx_type IN ('TRANSFER','WITHDRAWAL') AND amount>=100)
+   OR (tx_type='WITHDRAWAL' AND NULLIF(TRIM(description),'') IS NULL)
+ORDER BY amount DESC,transaction_id;
+Los dos TRANSFER superan el umbral didáctico. El retiro de 50 entra por descripción faltante. El depósito no cumple ninguno de los dos bloques. Una alerta exploratoria requiere revisión adicional y no constituye una acusación ni un reporte legal.

@@ -1,34 +1,14 @@
--- DAY 10 - HOMEWORK
--- 1. Muestra nullable
--- Grano: una fila por valor de prueba.
--- La muestra no representa saldos reales.
-WITH muestra AS (
-    SELECT *
-    FROM (VALUES
-        (10000::NUMERIC),
-        (0::NUMERIC),
-        (0::NUMERIC),
-        (NULL::NUMERIC)
-    ) AS v(valor)
-)
-SELECT
-    AVG(valor) AS promedio_sin_coalesce,
-    COUNT(valor) AS denominador_sin_coalesce,
-    AVG(COALESCE(valor, 0)) AS promedio_con_coalesce,
-    COUNT(*) AS denominador_con_coalesce
-FROM muestra;
--- 2. Reporte de cuentas CREDIT activas
-SELECT
-    a.account_number,
-    a.balance AS saldo_almacenado,
-    COUNT(t.transaction_id) AS cantidad_movimientos,
-    COALESCE(SUM(t.amount), 0) AS volumen_bruto_registrado
-FROM core.accounts a
-LEFT JOIN core.transactions t
-    ON a.account_id = t.account_id
-WHERE a.account_type = 'CREDIT'
-  AND a.is_active = true
-GROUP BY a.account_id, a.account_number, a.balance
-HAVING COUNT(t.transaction_id) = 0
-    OR COALESCE(SUM(t.amount), 0) >= 300
-ORDER BY a.account_number;
+WITH sample(x) AS (VALUES (NULL::numeric),(10000::numeric),(0::numeric),(0::numeric))
+SELECT ROUND(AVG(x),2) AS ignores_null,
+       ROUND(AVG(COALESCE(x,0)),2) AS treats_null_as_zero
+FROM sample;
+
+SELECT c.email,a.account_number,a.balance AS stored_balance,
+       COUNT(t.transaction_id) AS movement_count,
+       COALESCE(SUM(t.amount),0) AS recorded_gross_volume
+FROM core.customers c JOIN core.accounts a USING (customer_id)
+LEFT JOIN core.transactions t USING (account_id)
+WHERE a.account_type='CREDIT' AND a.is_active
+GROUP BY c.customer_id,c.email,a.account_id,a.account_number,a.balance
+HAVING COALESCE(SUM(t.amount),0)>=300 OR COUNT(t.transaction_id)=0
+ORDER BY recorded_gross_volume DESC;

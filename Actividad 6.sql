@@ -1,33 +1,29 @@
-Actividad 6 -- migration_01_core_evolution.sql
+-- 1. Compilación del nuevo Tipo Enumerado en PostgreSQL para el ciclo de vida crediticio
+CREATE TYPE core.loan_status_enum AS ENUM ('ACTIVE', 'PAID', 'DEFAULTED', 'CANCELLED');
 
-CREATE TYPE core.loan_status_enum AS ENUM (
-    'ACTIVE',
-    'PAID',
-    'DEFAULTED',
-    'CANCELLED'
-);
-
+-- 2. Inicio innegociable de transaccionalidad DDL en PostgreSQL
 BEGIN;
 
--- Agregar Credit Score a los clientes
-ALTER TABLE core.customers
-ADD COLUMN credit_score INTEGER;
+-- Transformación 1: Añadir métrica de puntuación crediticia a los titulares bancarios con su constraint en duro
+ALTER TABLE core.customers 
+    ADD COLUMN credit_score INTEGER NULL;
 
-ALTER TABLE core.customers
-ADD CONSTRAINT chk_customers_credit_score_range
-CHECK (credit_score BETWEEN 300 AND 850);
+ALTER TABLE core.customers 
+    ADD CONSTRAINT chk_customers_credit_score_range 
+    CHECK (credit_score BETWEEN 300 AND 850);
 
--- Agregar IBAN a las cuentas
-ALTER TABLE core.accounts
-ADD COLUMN iban VARCHAR(34) NULL;
+-- Transformación 2: Estandarización europea de identificación de cuentas bancarias y unicidad
+ALTER TABLE core.accounts 
+    ADD COLUMN iban VARCHAR(34) NULL;
 
-ALTER TABLE core.accounts
-ADD CONSTRAINT uq_accounts_iban
-UNIQUE (iban);
+ALTER TABLE core.accounts 
+    ADD CONSTRAINT uq_accounts_iban UNIQUE (iban);
 
--- Cambiar status de VARCHAR a ENUM
-ALTER TABLE core.loans
-ALTER COLUMN status TYPE core.loan_status_enum
-USING status::core.loan_status_enum;
+-- Transformación 3: Casteo estructural de columna de texto libre de préstamos a nuestro riguroso Enum catalogado
+ALTER TABLE core.loans 
+    ALTER COLUMN status DROP DEFAULT,
+    ALTER COLUMN status TYPE core.loan_status_enum USING status::core.loan_status_enum,
+    ALTER COLUMN status SET DEFAULT 'ACTIVE'::core.loan_status_enum;
 
+-- Si ningún solo paso presentó divergencias en terminal o fallos operantes de conversión sintáctica:
 COMMIT;

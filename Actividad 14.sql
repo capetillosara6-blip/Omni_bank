@@ -1,4 +1,4 @@
-Actividad 14- SELECT t1.account_id, t1.transaction_id AS earlier_id, t2.transaction_id AS later_id
+SELECT t1.account_id, t1.transaction_id AS earlier_id, t2.transaction_id AS later_id
 FROM core.transactions t1 JOIN core.transactions t2
  ON t1.account_id = t2.account_id
  AND (t1.tx_timestamp,t1.transaction_id) < (t2.tx_timestamp,t2.transaction_id)
